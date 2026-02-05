@@ -93,7 +93,7 @@ private void logActionPerformed(java.awt.event.ActionEvent evt) {
     String userPass = password.getText();
 
     try {
-        String query = "SELECT * FROM tbl_accounts WHERE u_email = ? AND u_password = ?";
+        String query = "SELECT * FROM tbl_accounts WHERE u_email = ? AND u_password = ? AND u_fname = ? AND u_lname = ? AND u_type = ? AND u_status = ?";
         java.sql.Connection conn = config.connectDB();
         java.sql.PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);
@@ -107,6 +107,9 @@ private void logActionPerformed(java.awt.event.ActionEvent evt) {
             sess.setFname(rs.getString("u_fname"));
             sess.setLname(rs.getString("u_lname"));
             sess.setEmail(rs.getString("u_email"));
+            sess.setEmail(rs.getString("u_passwod"));
+            sess.setEmail(rs.getString("u_type"));
+            sess.setEmail(rs.getString("u_status"));
 
             JOptionPane.showMessageDialog(null, "Login Success! Welcome " + sess.getFname());
             
